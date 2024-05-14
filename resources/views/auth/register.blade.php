@@ -57,7 +57,7 @@
                             <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('P.IVA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="vat_number" type="numerable" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number" value="{{ old('vat_number') }}" required autocomplete="vat_number" autofocus>
+                                <input id="vat_number" type="numerable" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number" value="{{ old('vat_number') }}" required autocomplete="vat_number" autofocus minlength="11" maxlength="11">
 
                                 @error('vat_number')
                                 <span class="invalid-feedback" role="alert">
