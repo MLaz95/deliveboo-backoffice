@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('surname');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->tinyInteger('vat_number');
+            $table->string('vat_number', 11);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
