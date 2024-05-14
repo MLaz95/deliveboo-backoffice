@@ -18,6 +18,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    
+                    @foreach ($restaurants as $restaurant)
+                        <h1>{{$restaurant->name_res}}</h1>
+                    @endforeach
+
                 </div>
             </div>
         </div>
