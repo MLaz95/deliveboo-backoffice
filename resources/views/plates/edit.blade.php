@@ -9,8 +9,6 @@
                     <h1>Edit</h1>
                 </div>
 
-                <a class="btn btn-primary text-decoration-none " href="{{route('plates.show', $plate->id)}}">Back</a>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('plates.update', $plate->id)}}" enctype="multipart/form-data">
                         @method('PUT')
@@ -34,9 +32,7 @@
                             <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingrediets') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="ingredients" rows="5" class="form-control h-100  @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients') ?? $plate->ingredients}}" required autocomplete="ingredients" autofocus>
-                                
-                                </textarea>    
+                                <textarea id="ingredients" rows="5" class="form-control h-100  @error('ingredients') is-invalid @enderror" name="ingredients" required autocomplete="ingredients" autofocus>{{ old('ingredients') ?? $plate->ingredients}}</textarea>    
                                 @error('ingredients')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -67,8 +63,9 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') ?? $plate->image}}" required accept=".jpg, .bpm, .png, .svg" autocomplete="image" autofocus>
-
+                                <img src="{{ asset('storage/' . $plate->image) }}" class="img-fluid mb-2" alt="@" style="width: 300px; height: 300px; object-fit: cover">
+                                <label for="image">Choose a New Image</label>
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" required accept=".jpg, .bpm, .png, .svg" autocomplete="image" autofocus>
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -85,13 +82,14 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        
+                            <div class="d-flex gap-2 justify-content-center">
+                                <a class="btn btn-secondary text-decoration-none " href="{{route('plates.show', $plate->id)}}">Back</a>
                                 <button type="submit" class="btn btn-primary">
-                                    Create
+                                    Update
                                 </button>
                             </div>
-                        </div>
+                        
                     </form>
                 </div>
             </div>
