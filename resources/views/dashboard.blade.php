@@ -21,6 +21,12 @@
 
                     <h1>{{$restaurant->name_res}}</h1>
 
+                    <div class="d-flex gap-2 mb-5">
+                        @foreach($restaurant->categories as $category)
+                        <span class="badge rounded-pill bg-light rounded rounded-3 text-black ">{{ $category->name }}</span>
+                        @endforeach
+                    </div>
+
                     <img class="img-fluid" src="{{ asset('storage/' . $restaurant->img_res) }}" alt="">
 
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRestaurantRequest;
+use App\Models\Category;
 use App\Models\Restaurant;
 use Illuminate\Contracts\View\View;
 use App\Providers\RouteServiceProvider;
@@ -26,11 +27,13 @@ class RestaurantController extends Controller
     // form to insert restaurant information
     public function create()
     {
+        $categories = Category::all();
+
         // if the user already has a restaurant in the db, then they are redirected to their dashboard
         if(Restaurant::all()->contains('user_id', Auth::id())){
             return redirect()->action([RestaurantController::class, 'index']);
         }else{
-            return view('auth/registerRestaurant');
+            return view('auth/registerRestaurant', compact('categories'));
         }
     }
 
@@ -45,6 +48,8 @@ class RestaurantController extends Controller
         $img_path = Storage::disk('public')->put('restaurant_images', $request->img_res);
         $newRestaurant->img_res = $img_path;
         $newRestaurant->save();
+
+        $newRestaurant->categories()->attach($request->categories);
 
         return redirect('dashboard');
     }
