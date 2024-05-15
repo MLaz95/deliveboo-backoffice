@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRestaurantRequest;
 use App\Models\Restaurant;
 use Illuminate\Contracts\View\View;
 use App\Providers\RouteServiceProvider;
@@ -33,13 +34,15 @@ class RestaurantController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(StoreRestaurantRequest $request)
     {
         // $restaurant = Restaurant::create([
         //     'name_res' => $request->name_res,
         //     'address_res' => $request->address_res,
         //     'img_res' => $request->img_res,
         // ]);
+
+        $request->validated();
 
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($request->all());

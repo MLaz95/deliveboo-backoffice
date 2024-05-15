@@ -16,7 +16,7 @@
                             <label for="name_res" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name_res" type="text" class="form-control @error('name_res') is-invalid @enderror" name="name_res" value="{{ old('name_res') }}" required autocomplete="name_res" autofocus>
+                                <input id="name_res" type="text" class="form-control @error('name_res') is-invalid @enderror" name="name_res" value="{{ old('name_res') }}" required maxlength="100" autocomplete="name_res" autofocus>
 
                                 @error('name_res')
                                 <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                             <label for="address_res" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address_res" type="text" class="form-control @error('address_res') is-invalid @enderror" name="address_res" value="{{ old('address_res') }}" required autocomplete="address_res" autofocus>
+                                <input id="address_res" type="text" class="form-control @error('address_res') is-invalid @enderror" name="address_res" value="{{ old('address_res') }}" required maxlength="100" autocomplete="address_res" autofocus>
 
                                 @error('address_res')
                                 <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                             <label for="img_res" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="img_res" type="file" class="form-control @error('img_res') is-invalid @enderror" name="img_res" value="{{ old('img_res') }}" required autocomplete="img_res" autofocus>
+                                <input id="img_res" type="file" class="form-control @error('img_res') is-invalid @enderror" name="img_res" value="{{ old('img_res') }}" required accept=".jpg, .bpm, .png, .svg" autocomplete="img_res" autofocus>
 
                                 @error('img_res')
                                 <span class="invalid-feedback" role="alert">
