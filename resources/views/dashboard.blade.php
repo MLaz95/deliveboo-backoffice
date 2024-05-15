@@ -18,6 +18,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <h1>{{$restaurant->name_res}}</h1>
+
                 </div>
             </div>
         </div>
