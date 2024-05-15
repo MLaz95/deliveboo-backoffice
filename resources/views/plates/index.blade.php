@@ -17,14 +17,17 @@
                     <h1>Your Plates</h1>
                 </div>
 
+                @foreach ($plates as $plate)
                 <div class="card m-3 " style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{{asset('storage/' . $plate->image)}}" class="card-img-top" alt="@">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <h5 class="card-title">{{$plate->name}}</h5>
+                      <p class="card-text">{{$plate->ingredients}}</p>
+                      <a href="{{route('plates.show', $plate->id)}}" class="btn btn-primary">Show</a>
                     </div>
                 </div>
+                @endforeach
+
             </div>
         </div>
     </div>

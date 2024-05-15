@@ -16,7 +16,12 @@ class PlateController extends Controller
      */
     public function index()
     {
-        return view('plates.index');
+
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+
+        $plates = Plate::where('restaurant_id', $restaurant->id)->get(); 
+
+        return view('plates.index', compact('plates'));
     }
 
     /**
@@ -51,7 +56,7 @@ class PlateController extends Controller
      */
     public function show(Plate $plate)
     {
-        //
+        return view('plates.show', compact('plate'));
     }
 
     /**
@@ -59,7 +64,7 @@ class PlateController extends Controller
      */
     public function edit(Plate $plate)
     {
-        //
+        return view('plates.edit', compact('plate'));
     }
 
     /**
