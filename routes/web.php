@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use App\Models\Restaurant;
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function (){
     Route::post('/registerRestaurant', [RestaurantController::class, 'store']);
     Route::get('/dashboard', [RestaurantController::class, 'index'])->name('restaurant');
 });
+
+Route::resource('plates', PlateController::class);
 
 
 require __DIR__.'/auth.php';

@@ -27,6 +27,8 @@
                         @endforeach
                     </div>
 
+                    <a href="{{route('plates.index')}}" class="btn btn-danger text-decoration-none ">menù</a>
+
                     <img class="img-fluid" src="{{ asset('storage/' . $restaurant->img_res) }}" alt="">
 
                 </div>
