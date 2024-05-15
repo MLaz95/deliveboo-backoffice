@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\View;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -43,6 +44,8 @@ class RestaurantController extends Controller
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($request->all());
         $newRestaurant->user_id = Auth::id();
+        $img_path = Storage::disk('public')->put('restaurant_images', $request->img_res);
+        $newRestaurant->img_res = $img_path;
         $newRestaurant->save();
 
         return redirect('dashboard');

@@ -21,6 +21,8 @@
 
                     <h1>{{$restaurant->name_res}}</h1>
 
+                    <img class="img-fluid" src="{{ asset('storage/' . $restaurant->img_res) }}" alt="">
+
                 </div>
             </div>
         </div>
