@@ -10,15 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
+    // this sends to the dashboard where a restaurant owner can review their information,
+    // access the menu, and see their stats
     public function index()
     {
-        $restaurants = Restaurant::all();
-        return view('dashboard', compact('restaurants'));
+        // takes from db only restaurants with user_id matching current logged in user
+        // first() returns only the first element of the collection
+        // this would have to be changed to get() to manage multiple items
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        return view('dashboard', compact('restaurant'));
     }
 
+    // form to insert restaurant information
     public function create()
     {
-        return view('auth.registerRestaurant');
+        // if the user already has a restaurant in the db, then they are redirected to their dashboard
+        if(Restaurant::all()->contains('user_id', Auth::id())){
+            return redirect()->action([RestaurantController::class, 'index']);
+        }else{
+            return view('auth/registerRestaurant');
+        }
     }
 
     public function store(Request $request)
@@ -34,7 +45,7 @@ class RestaurantController extends Controller
         $newRestaurant->user_id = Auth::id();
         $newRestaurant->save();
 
-        return redirect('RouteServiceProvider::HOME,');
+        return redirect('dashboard');
     }
 
 }

@@ -19,10 +19,7 @@
 
                     {{ __('You are logged in!') }}
 
-                    
-                    @foreach ($restaurants as $restaurant)
-                        <h1>{{$restaurant->name_res}}</h1>
-                    @endforeach
+                    <h1>{{$restaurant->name_res}}</h1>
 
                 </div>
             </div>
