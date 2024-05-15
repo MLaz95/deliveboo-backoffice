@@ -12,14 +12,14 @@
                     <h1>{{$restaurant->name_res}}</h1>
                 </div>
                 
-                <div class="card-body d-flex gap-3">
+                <div class="card-body d-flex gap-3 flex-column flex-md-row">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                     @endif
                     
-                    <div style="width: 500px; max-height: 500px;">
+                    <div style="max-width: 500px; max-height: 500px;">
                         <img class="" src="{{ asset('storage/' . $restaurant->img_res) }}" alt="{{ $restaurant->name }}" style="width: 100%;">
                     </div>
                     
