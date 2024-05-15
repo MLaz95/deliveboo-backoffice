@@ -37,8 +37,10 @@ class PlateController extends Controller
      */
     public function store(StorePlateRequest $request)
     {
-        $newPlate = new Plate();
 
+        $request->validated();
+
+        $newPlate = new Plate();
         // ci siamo riportati l'id del ristorante e lo abbiamo associato all'id del nuovo piatto..
 
         $newPlate->fill($request->all());
@@ -72,6 +74,9 @@ class PlateController extends Controller
      */
     public function update(UpdatePlateRequest $request, Plate $plate)
     {
+
+        $request->validated();
+        
         $plate->fill($request->all());
 
         $plateImg = Storage::disk('public')->put('plate_images', $request->image);

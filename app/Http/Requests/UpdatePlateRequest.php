@@ -22,7 +22,10 @@ class UpdatePlateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:50',
+            'ingredients' => 'required',
+            'imgage' => 'required|mimes:jpg, bmp, png, svg',
+            'price' => 'required',
         ];
     }
 }

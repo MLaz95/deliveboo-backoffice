@@ -22,7 +22,10 @@ class StorePlateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:50',
+            'ingredients' => 'required',
+            'image' => 'required|mimes:jpg, bmp, png, svg',
+            'price' => 'required',
         ];
     }
 }
