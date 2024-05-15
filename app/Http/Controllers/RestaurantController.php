@@ -36,12 +36,7 @@ class RestaurantController extends Controller
 
     public function store(StoreRestaurantRequest $request)
     {
-        // $restaurant = Restaurant::create([
-        //     'name_res' => $request->name_res,
-        //     'address_res' => $request->address_res,
-        //     'img_res' => $request->img_res,
-        // ]);
-
+        // validated by StoreRestaurantRequest
         $request->validated();
 
         $newRestaurant = new Restaurant();
