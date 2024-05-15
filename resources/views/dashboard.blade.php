@@ -3,40 +3,40 @@
 @section('content')
 <div class="container">
     <h2 class="fs-4 text-secondary my-4">
-        Welcome Back Admin
+        Welcome Back {{$user->name}}
     </h2>
     <div class="row justify-content-center">
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1>Your Restaurant</h1>
+                    <h1>{{$restaurant->name_res}}</h1>
                 </div>
-
-                <div class="card-body">
+                
+                <div class="card-body d-flex gap-3">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                     @endif
-
-                    <h1>{{$restaurant->name_res}}</h1>
-
-                    <div class="d-flex justify-content-between align-items-center my-4  ">
-                        <div class="d-flex gap-2">
+                    
+                    <div style="width: 500px; max-height: 500px;">
+                        <img class="" src="{{ asset('storage/' . $restaurant->img_res) }}" alt="{{ $restaurant->name }}" style="width: 100%;">
+                    </div>
+                    
+                    <div class="d-flex flex-column gap-3">
+                        <h2>{{$restaurant->address_res}}</h2>
+                        <div class="d-flex gap-2 align-items-center">
+                            <div>Categories:</div>
                             @foreach($restaurant->categories as $category)
                             <span class="badge rounded-pill bg-light rounded rounded-3 text-black ">{{ $category->name }}</span>
                             @endforeach
                         </div>
     
-                        <div>
-                            <a href="{{route('plates.index')}}" class="btn btn-primary text-decoration-none ">menù</a>
+                        <div class="d-flex flex-column align-items-start gap-2">
+                            <a href="{{route('plates.index')}}" class="btn btn-primary text-decoration-none ">Menu</a>
+                            <button href="#!" class="btn btn-secondary text-decoration-none" disabled>Statistics</button>
                         </div>
                     </div>
-
-                    <div class="container">
-                        <img class="img-fluid" src="{{ asset('storage/' . $restaurant->img_res) }}" alt="">
-                    </div>
-
                 </div>
             </div>
         </div>

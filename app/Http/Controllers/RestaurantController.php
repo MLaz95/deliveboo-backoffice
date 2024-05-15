@@ -21,7 +21,8 @@ class RestaurantController extends Controller
         // first() returns only the first element of the collection
         // this would have to be changed to get() to manage multiple items
         $restaurant = Restaurant::where('user_id', Auth::id())->first();
-        return view('dashboard', compact('restaurant'));
+        $user = Auth::user();
+        return view('dashboard', compact('restaurant', 'user'));
     }
 
     // form to insert restaurant information
