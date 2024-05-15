@@ -9,15 +9,18 @@
                     <h1>Edit</h1>
                 </div>
 
+                <a class="btn btn-primary text-decoration-none " href="{{route('plates.show', $plate->id)}}">Back</a>
+
                 <div class="card-body">
-                    <form method="POST" action="{{ route('plates.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('plates.update', $plate->id)}}" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
 
                         <div class="mb-4 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$plate->name}}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name') ?? $plate->name}}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -31,7 +34,7 @@
                             <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingrediets') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="ingredients" rows="5" class="form-control h-100  @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients') }}" required autocomplete="ingredients" autofocus>
+                                <textarea id="ingredients" rows="5" class="form-control h-100  @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients') ?? $plate->ingredients}}" required autocomplete="ingredients" autofocus>
                                 
                                 </textarea>    
                                 @error('ingredients')
@@ -49,7 +52,7 @@
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">€</span>
-                                    <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" aria-label="Amount (to the nearest dollar)">
+                                    <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{old('price') ?? $plate->price}}" required autocomplete="price" aria-label="Amount (to the nearest dollar)">
                                 </div>
 
                                 @error('price')
@@ -64,7 +67,7 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required accept=".jpg, .bpm, .png, .svg" autocomplete="image" autofocus>
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') ?? $plate->image}}" required accept=".jpg, .bpm, .png, .svg" autocomplete="image" autofocus>
 
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -78,7 +81,7 @@
                             <label for="visible" class="col-md-4 col-form-label text-md-right">{{ __('Visible') }}</label>
 
                             <div class="col-md-6">
-                                <input id="visible" type="checkbox" class="form-check-input" value='{{true}}' name="visible">
+                                <input id="visible" type="checkbox" class="form-check-input" value='{{true}}' {{ $plate->visible ? 'checked' : '' }} name="visible">
                             </div>
                         </div>
 

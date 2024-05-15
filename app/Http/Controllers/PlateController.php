@@ -72,7 +72,14 @@ class PlateController extends Controller
      */
     public function update(UpdatePlateRequest $request, Plate $plate)
     {
-        //
+        $plate->fill($request->all());
+
+        $plateImg = Storage::disk('public')->put('plate_images', $request->image);
+        $plate->image = $plateImg;
+
+        $plate->save();
+
+        return redirect()->route('plates.show', compact('plate'));
     }
 
     /**
