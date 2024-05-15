@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Plate;
 use App\Http\Requests\StorePlateRequest;
 use App\Http\Requests\UpdatePlateRequest;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PlateController extends Controller
 {
@@ -21,7 +24,7 @@ class PlateController extends Controller
      */
     public function create()
     {
-        //
+        return view('plates.create');
     }
 
     /**
@@ -29,7 +32,18 @@ class PlateController extends Controller
      */
     public function store(StorePlateRequest $request)
     {
-        //
+        $newPlate = new Plate();
+
+        // ci siamo riportati l'id del ristorante e lo abbiamo associato all'id del nuovo piatto..
+
+        $newPlate->fill($request->all());
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $newPlate->restaurant_id = $restaurant->id;
+        $plateImg = Storage::disk('public')->put('plate_images', $request->image);
+        $newPlate->image = $plateImg;
+        $newPlate->save();   
+
+        return redirect(route('plates.index'));
     }
 
     /**

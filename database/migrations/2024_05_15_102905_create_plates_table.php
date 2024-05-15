@@ -15,13 +15,14 @@ return new class extends Migration
             
             
             $table->id(); 
+
             $table->foreignId('restaurant_id')->constrained();
 
             $table->string('name', 50);
             $table->text('ingredients');
             $table->decimal('price');
             $table->text('image');
-            $table->boolean('visible');
+            $table->boolean('visible')->default(false);
             
 
 

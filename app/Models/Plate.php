@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Plate extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'ingredients',
+        'price',
+        'visible',
+    ];
+
+    public function restaurant(){
+        return $this->belongsTo(Restaurant::class);
+    }
 }
