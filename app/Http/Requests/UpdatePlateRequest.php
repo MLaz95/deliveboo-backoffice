@@ -24,7 +24,7 @@ class UpdatePlateRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'ingredients' => 'required',
-            'imgage' => 'required|mimes:jpg, bmp, png, svg',
+            'image' => 'required|mimes:jpg, bmp, png, svg',
             'price' => 'required',
         ];
     }
