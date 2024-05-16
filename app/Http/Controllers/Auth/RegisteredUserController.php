@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Restaurant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -11,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -41,6 +43,10 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'vat_number' => ['required', 'string', 'max:11', 'min:11', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+
+            'name_res' => 'required|max:100',
+            'address_res' => 'required|max:100',
+            'img_res' => 'required|mimes:jpg, bmp, png, svg',
         ]);
 
         $user = User::create([
@@ -55,6 +61,16 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect('registerRestaurant');
+       
+        $newRestaurant = new Restaurant();
+        $newRestaurant->fill($request->all());
+        $newRestaurant->user_id = Auth::id();
+        $img_path = Storage::disk('public')->put('restaurant_images', $request->img_res);
+        $newRestaurant->img_res = $img_path;
+        $newRestaurant->save();
+
+        $newRestaurant->categories()->attach($request->categories);
+
+        return redirect('dashboard');
     }
 }
