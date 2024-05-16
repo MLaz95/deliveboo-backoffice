@@ -1,0 +1,20 @@
+.jumbotron{
+    background-color: #3dc4df;
+
+    height: calc(100vh - 126px);
+
+    .welcome_text{
+        h1{
+            font-size: 80px;
+        }
+    }
+
+    .logo_laravel{
+        img{
+
+            height: 108%;
+
+            transform: rotate(20deg);
+        }
+    }
+}
