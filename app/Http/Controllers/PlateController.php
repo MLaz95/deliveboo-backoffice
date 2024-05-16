@@ -56,9 +56,16 @@ class PlateController extends Controller
     /**
      * Display the specified resource.
      */
+
+    // a user can access show and edit pages only if the plate belongs to their restaurant
     public function show(Plate $plate)
     {
-        return view('plates.show', compact('plate'));
+        $restaurant = Restaurant::where('id', $plate->restaurant_id)->first();
+        if($restaurant->id == Auth::id()){
+            return view('plates.show', compact('plate'));
+        } else{
+            return redirect(route('plates.index'));
+        }
     }
 
     /**
@@ -66,7 +73,13 @@ class PlateController extends Controller
      */
     public function edit(Plate $plate)
     {
-        return view('plates.edit', compact('plate'));
+        $restaurant = Restaurant::where('id', $plate->restaurant_id)->first();
+        if($restaurant->id == Auth::id()){
+            return view('plates.edit', compact('plate'));
+        } else{
+            return redirect(route('plates.index'));
+        }
+        
     }
 
     /**
