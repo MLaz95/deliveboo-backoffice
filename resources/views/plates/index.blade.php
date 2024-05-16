@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="index-box">
+    
     <div class="container">
         <div class="my-4 d-flex justify-content-between align-items-center">
             <div>
@@ -39,9 +41,12 @@
                         </div>
                         @endforeach
                     </div>
-
+    
                 </div>
             </div>
         </div>
     </div>
+
+</div>
+
 @endsection
