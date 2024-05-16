@@ -79,6 +79,10 @@ class PlateController extends Controller
         
         $plate->fill($request->all());
 
+        if ($request -> visible == null){
+            $plate-> visible = 0;
+        }
+
         $plateImg = Storage::disk('public')->put('plate_images', $request->image);
         $plate->image = $plateImg;
 

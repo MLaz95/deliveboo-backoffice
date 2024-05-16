@@ -44,7 +44,10 @@ class RegisteredUserController extends Controller
             'vat_number' => ['required', 'string', 'max:11', 'min:11', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
+
+            // Restaurant
             'name_res' => 'required|max:100',
+            'categories' => 'required|array|min:1',
             'address_res' => 'required|max:100',
             'img_res' => 'required|mimes:jpg, bmp, png, svg',
         ]);
