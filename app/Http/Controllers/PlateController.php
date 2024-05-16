@@ -74,7 +74,7 @@ class PlateController extends Controller
     public function edit(Plate $plate)
     {
         $restaurant = Restaurant::where('id', $plate->restaurant_id)->first();
-        if($restaurant->id == Auth::id()){
+        if($restaurant->user_id == Auth::id()){
             return view('plates.edit', compact('plate'));
         } else{
             return redirect(route('plates.index'));
