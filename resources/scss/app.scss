@@ -1,1 +1,31 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+@import '../scss/partials/welcome.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+nav{
+    background-color: #3393a6;
+
+    color: #F6F3E4;
+    font-size: 25px;
+    ul{
+        li{
+
+            transition: .3s ease;
+
+            :hover{
+                transition: .3s ease;
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    box-shadow: #3393a6 0px 54px 55px, #3393a6c4 0px -12px 30px, #3393a6b7 0px 4px 6px, #3393a6a7 0px 12px 13px, #3393a697 0px -3px 5px;
+}
