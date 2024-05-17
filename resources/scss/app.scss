@@ -27,7 +27,7 @@ nav{
     font-size: 25px;
 
     font-family:"Pacifico", cursive;
-    text-shadow:2px 4px #fd6055ba;
+    text-shadow:2px 4px hsla(4, 98%, 66%, 0.7);
     font-weight: 400;
     font-style: normal;
 
@@ -45,7 +45,8 @@ nav{
         }
     }
 
-    box-shadow: #3393a6 0px 54px 55px, #3393a6c4 0px -12px 30px, #3393a6b7 0px 4px 6px, #3393a6a7 0px 12px 13px, #3393a697 0px -3px 5px;
+   
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .all{
