@@ -19,11 +19,11 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function filter($id){
+    public function filter(Request $request){
         $filtered = DB::table('restaurants')
                         ->select('restaurants.*')
                         ->join('category_restaurant', 'restaurants.id', '=', 'category_restaurant.restaurant_id')
-                        ->whereIn('category_restaurant.category_id', [1,5,11])
+                        ->whereIn('category_restaurant.category_id', $request->queryId)
                         ->distinct()
                         ->get();
 
