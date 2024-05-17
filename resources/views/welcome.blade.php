@@ -8,7 +8,7 @@
             </h1>
         </div>
         <div class="logo_laravel">
-            <img src="{{ asset('storage/branding/meat.png') }}" alt="@">
+            <img class="slide" src="{{ asset('storage/branding/meat.png') }}" alt="@">
         </div>
     </div>
 </div>

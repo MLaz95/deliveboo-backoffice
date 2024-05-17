@@ -1,5 +1,6 @@
 .jumbotron{
     background-color: #3dc4df;
+    overflow-x: hidden;
 
     height: calc(100vh - 126px);
 
@@ -15,11 +16,34 @@
     }
 
     .logo_laravel{
-        img{
+        .slide{
 
-            height: 108%;
-
+            height: 125%;
             transform: rotate(20deg);
+            -webkit-animation: slide 0.8s cubic-bezier(0.175, 0.885, 0.320, 1.275) .7s both;
+	        animation: slide 0.8s cubic-bezier(0.175, 0.885, 0.320, 1.275) .7s both;
+
+            @-webkit-keyframes slide {
+                0% {
+                -webkit-transform: translateX(100vw);
+                        transform: translateX(100vw);
+                }
+                100% {
+                -webkit-transform: translateX(-100px);
+                        transform: translateX(-100px);
+                }
+            }
+            @keyframes slide {
+                0% {
+                -webkit-transform: translateX(100vw);
+                        transform: translateX(100vw);
+                }
+                100% {
+                -webkit-transform: translateX(-100px);
+                        transform: translateX(-100px);
+                }
+            }
+  
         }
     }
 }
