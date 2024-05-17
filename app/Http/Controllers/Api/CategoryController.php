@@ -21,9 +21,10 @@ class CategoryController extends Controller
 
     public function filter($id){
         $filtered = DB::table('restaurants')
+                        ->select('restaurants.*')
                         ->join('category_restaurant', 'restaurants.id', '=', 'category_restaurant.restaurant_id')
-                        ->select('*')
-                        ->where('category_restaurant.category_id', $id)
+                        ->whereIn('category_restaurant.category_id', [1,5,11])
+                        ->distinct()
                         ->get();
 
         return response()->json([
