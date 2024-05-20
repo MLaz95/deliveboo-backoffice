@@ -59,6 +59,11 @@
                     <ul class="navbar-nav ml-auto gap-3 ">
                         <!-- Authentication Links -->
                         @guest
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="{{ route('home') }}">{{ __('Home') }}</a>
+                            </li>
+                        </ul>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
