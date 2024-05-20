@@ -73,6 +73,11 @@
                         </li>
                         @endif
                         @else
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="{{ route('home') }}">{{ __('Home') }}</a>
+                            </li>
+                        </ul>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link text-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
