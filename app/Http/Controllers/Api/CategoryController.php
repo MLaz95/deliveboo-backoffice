@@ -19,14 +19,28 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function filter(Request $request){
-        $filtered = DB::table('restaurants')
-                        ->select('restaurants.*')
-                        ->join('category_restaurant', 'restaurants.id', '=', 'category_restaurant.restaurant_id')
-                        ->whereIn('category_restaurant.category_id', $request->queryId)
-                        ->distinct()
-                        ->get();
+    // public function filter(Request $request){
+    //     $filtered = DB::table('restaurants')
+    //                     ->select('restaurants.*')
+    //                     ->join('category_restaurant', 'restaurants.id', '=', 'category_restaurant.restaurant_id')
+    //                     ->whereIn('category_restaurant.category_id', $request->queryId)
+    //                     ->distinct()
+    //                     ->get();
 
+    //     return response()->json([
+    //         "success" => true,
+    //         "results" => $filtered,
+    //     ]);
+    // }
+
+    public function filter(Request $request) {
+        $filtered = Restaurant::with('categories')
+                              ->whereHas('categories', function($query) use ($request) {
+                                  $query->whereIn('categories.id', $request->queryId);
+                              })
+                              ->distinct()
+                              ->get();
+    
         return response()->json([
             "success" => true,
             "results" => $filtered,
