@@ -14,16 +14,16 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories  = [
-        "italiano",
-        "francese",
-        "giapponese",
-        "messicano",
-        "greco",
-        "thailandese",
-        "tedesco",
-        "vegano",
-        "pesce",
-        "carne",
+        "italian",
+        "French",
+        "Japanese",
+        "Mexican",
+        "Greek",
+        "Thai",
+        "German",
+        "Vegan",
+        "Fish",
+        "Meat",
         "fast food",];
 
         foreach($categories as $category){
