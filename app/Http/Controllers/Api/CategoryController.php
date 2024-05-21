@@ -33,13 +33,49 @@ class CategoryController extends Controller
     //     ]);
     // }
 
+    // public function filter(Request $request) {
+    //     $filtered = Restaurant::with('categories')
+    //                           ->whereHas('categories', function($query) use ($request) {
+    //                               $query->whereIn('categories.id', $request->queryId);
+    //                           })
+    //                           ->distinct()
+    //                           ->get();
+    
+    //     return response()->json([
+    //         "success" => true,
+    //         "results" => $filtered,
+    //     ]);
+    // }
+
     public function filter(Request $request) {
-        $filtered = Restaurant::with('categories')
-                              ->whereHas('categories', function($query) use ($request) {
-                                  $query->whereIn('categories.id', $request->queryId);
-                              })
-                              ->distinct()
-                              ->get();
+        $categories = $request->queryId;
+    
+        // Verifica se ci sono categorie selezionate
+        if (empty($categories)) {
+            return response()->json([
+                "success" => true,
+                "message" => "Nessuna categoria selezionata",
+                "results" => [],
+            ]);
+        }
+    
+        $filtered = Restaurant::query();
+    
+        foreach ($categories as $categoryId) {
+            $filtered->whereHas('categories', function($query) use ($categoryId) {
+                $query->where('categories.id', $categoryId);
+            });
+        }
+    
+        $filtered->where(function($query) use ($categories) {
+            foreach ($categories as $categoryId) {
+                $query->orWhereHas('categories', function($query) use ($categoryId) {
+                    $query->where('categories.id', $categoryId);
+                });
+            }
+        });
+    
+        $filtered = $filtered->with('categories')->get();
     
         return response()->json([
             "success" => true,
