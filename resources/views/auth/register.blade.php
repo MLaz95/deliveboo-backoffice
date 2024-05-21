@@ -102,7 +102,7 @@
                             </div>
                             <div class="col-2 d-flex flex-column justify-content-end align-items-center ">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" onclick="validate()">
                                         {{ __('Submit') }}
                                     </button>
                                 </div>
@@ -166,10 +166,10 @@
                                                     type="checkbox" 
                                                     name="categories[]" 
                                                     value="{{$category->id}}" 
-                                                    class="form-check-input" 
+                                                    class="form-check-input checkbox" 
                                                     id="category-{{$category->id}}"
                                                     {{in_array($category->id, old('categories', [])) ? 'checked' : ''}}
-                                                    
+                                                    required
                                                 >
                                                 <label 
                                                     class="form-check-label" 
@@ -200,4 +200,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    const checkBoxes = document.querySelectorAll('.checkbox');
+    console.log(checkBoxes);
+    
+    function validate(){
+        let marked_checkboxes = [];
+        checkBoxes.forEach((checkBox, index) => {
+            if(checkBox.checked){
+                marked_checkboxes.push(checkBox)
+            }
+        });
+        
+        if(marked_checkboxes.length > 0){
+            checkBoxes.forEach(checkBox =>{
+                checkBox.required = false;
+            })
+        }else{
+            checkBoxes.forEach(checkBox =>{
+                checkBox.required = true;
+            })
+        }
+    }
+</script>
 @endsection
+
+
