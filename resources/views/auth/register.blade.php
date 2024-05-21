@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" onsubmit="comparePwd()">
                         @csrf
                         <div class="rov d-flex ">
                             <div class="col-5">
@@ -92,7 +92,9 @@
                                     <div class="col-md-6">
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                     </div>
+                                    <div id="match-text" class="text-danger d-none">Passwords do not match</div>
                                 </div>
+
 
                                 <div class="my-3 fw-bold  ">
                                     * Required field
@@ -221,6 +223,22 @@
             checkBoxes.forEach(checkBox =>{
                 checkBox.required = true;
             })
+        }
+    }
+
+    const passwordInput = document.querySelector('#password');
+    const confirmPasswordInput = document.querySelector('#password-confirm');
+    const matchText = document.querySelector('#match-text');
+
+    console.log('pwd', passwordInput)
+    console.log('confirmPwd', confirmPasswordInput)
+
+    function comparePwd(){
+        if(passwordInput.value != confirmPasswordInput.value){
+            console.log('not matching')
+            event.preventDefault()
+            matchText.classList.remove('d-none');
+            return false
         }
     }
 </script>
