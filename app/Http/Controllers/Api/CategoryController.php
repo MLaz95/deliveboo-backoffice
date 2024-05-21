@@ -53,9 +53,6 @@ class CategoryController extends Controller
                                 ->where('id', $id)
                                 ->first();
 
-
-        $plates = $restaurant->plates;
-
         return response()->json([
             "success" => true,
             "results" => $restaurant,
