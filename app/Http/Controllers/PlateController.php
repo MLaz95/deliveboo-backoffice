@@ -46,8 +46,10 @@ class PlateController extends Controller
         $newPlate->fill($request->all());
         $restaurant = Restaurant::where('user_id', Auth::id())->first();
         $newPlate->restaurant_id = $restaurant->id;
-        $plateImg = Storage::disk('public')->put('plate_images', $request->image);
-        $newPlate->image = $plateImg;
+        if ($request->hasFile('image')){
+            $plateImg = Storage::disk('public')->put('plate_images', $request->image);
+            $newPlate->image = $plateImg;
+        }
         $newPlate->save();   
 
         return redirect(route('plates.index'));
@@ -96,8 +98,11 @@ class PlateController extends Controller
             $plate-> visible = 0;
         }
 
-        $plateImg = Storage::disk('public')->put('plate_images', $request->image);
-        $plate->image = $plateImg;
+        if ($request->hasFile('image')){
+            $plateImg = Storage::disk('public')->put('plate_images', $request->image);
+            $plate->image = $plateImg;
+        }
+
 
         $plate->save();
 
