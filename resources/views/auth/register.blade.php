@@ -169,6 +169,7 @@
                                                     class="form-check-input" 
                                                     id="category-{{$category->id}}"
                                                     {{in_array($category->id, old('categories', [])) ? 'checked' : ''}}
+                                                    
                                                 >
                                                 <label 
                                                     class="form-check-label" 

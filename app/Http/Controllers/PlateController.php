@@ -66,7 +66,7 @@ class PlateController extends Controller
         if($restaurant->id == Auth::id()){
             return view('plates.show', compact('plate'));
         } else{
-            return redirect(route('plates.index'));
+            abort(404);
         }
     }
 
@@ -79,7 +79,7 @@ class PlateController extends Controller
         if($restaurant->user_id == Auth::id()){
             return view('plates.edit', compact('plate'));
         } else{
-            return redirect(route('plates.index'));
+            abort(404);
         }
         
     }
