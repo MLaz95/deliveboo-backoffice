@@ -82,4 +82,18 @@ class CategoryController extends Controller
             "results" => $filtered,
         ]);
     }
+
+    public function menu($id) {
+
+        $plates = Restaurant::with('plates')
+                            ->whereHas('plates', function($query) use ($id) {
+                                $query->where('plates.restaurant_id', $id);
+                            })
+                            ->get();
+
+        return response()->json([
+            "success" => true,
+            "results" => "$plates",
+        ]);
+    }
 }
