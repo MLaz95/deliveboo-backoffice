@@ -76,15 +76,13 @@ class CategoryController extends Controller
 
     public function menu($id) {
 
-        $plates = Restaurant::with('plates')
-                            ->whereHas('plates', function($query) use ($id) {
-                                $query->where('plates.restaurant_id', $id);
-                            })
-                            ->get();
+        $restaurant = Restaurant::with('plates', 'categories')
+                                ->where('id', $id)
+                                ->first();
 
         return response()->json([
             "success" => true,
-            "results" => "$plates",
+            "results" => $restaurant,
         ]);
     }
 }
