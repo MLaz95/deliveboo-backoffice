@@ -24,7 +24,7 @@ class StorePlateRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'ingredients' => 'required',
-            'image' => 'mimes:jpg, bmp, png, svg',
+            'image' => 'mimes:jpg,bmp,png,svg',
             'price' => 'required',
         ];
     }

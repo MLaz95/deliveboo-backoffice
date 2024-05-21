@@ -24,7 +24,7 @@ class StoreRestaurantRequest extends FormRequest
         return [
             'name_res' => 'required|max:100',
             'address_res' => 'required|max:100',
-            'img_res' => 'required|mimes:jpg, bmp, png, svg'
+            'img_res' => 'required|mimes:jpg,bmp,png,svg'
         ];
     }
 }
