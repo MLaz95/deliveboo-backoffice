@@ -76,7 +76,9 @@ class CategoryController extends Controller
 
     public function menu($id) {
 
-        $restaurant = Restaurant::with('plates', 'categories')
+        $restaurant = Restaurant::with(['plates'=> function($query){
+            $query->where('visible', true);
+        }, 'categories'])
                                 ->where('id', $id)
                                 ->first();
 
