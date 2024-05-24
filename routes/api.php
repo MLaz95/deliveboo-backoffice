@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Api\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
