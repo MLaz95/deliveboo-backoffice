@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,7 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::post('/categories', [CategoryController::class, 'filter']);
 
 Route::get('/restaurants/{id}', [CategoryController::class, 'menu']);
+
+// route for Braintree
+Route::get('/payment/token', [PaymentController::class, 'getToken']);
+Route::post('/payment/checkout', [PaymentController::class, 'processPayment']);
