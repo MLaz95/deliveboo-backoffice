@@ -8,24 +8,25 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        // Recupera i dati dal payload della richiesta
+        $customerData = $request->input('customerData');
+        $cart = $request->input('cart');
 
-        $customerData = $request->customerData->amount;
-
-        // $newOrder = new Order();
-
-        // $newOrder->name = $customerData->billingAddress->name;
-        // $newOrder->surname = $customerData->billingAddress->surname;
-        // $newOrder->email = $customerData->email;
-        // $newOrder->phone_number = $customerData->billingAddress->phoneNumber;
-        // $newOrder->address = $customerData->billingAddress->address;
-        // $newOrder->total = $customerData->amount;
-        // $newOrder->save();
+        // Crea un nuovo ordine e salva i dati nella tabella 'orders'
+        $newOrder = new Order();
+        $newOrder->name = $customerData['billingAddress']['name'];
+        $newOrder->surname = $customerData['billingAddress']['surname'];
+        $newOrder->email = $customerData['email'];
+        $newOrder->phone_number = $customerData['billingAddress']['phoneNumber'];
+        $newOrder->address = $customerData['billingAddress']['address'];
+        $newOrder->total = $cart['total'];
+        $newOrder->save();
 
         return response()->json([
             "success" => true,
-            "results" => $customerData,
+            "results" => $newOrder,
         ]);
-
     }
 }
