@@ -24,8 +24,8 @@ class PaymentController extends Controller
 
     public function processPayment(Request $request)
     {
-        $nonce ='fake-valid-nonce';
-        $amount = '199.00';
+        $nonce = $request->input('paymentMethodNonce');
+        $amount = $request->input('amount');
 
         $gateway = new Gateway([
             'environment' => 'sandbox',
