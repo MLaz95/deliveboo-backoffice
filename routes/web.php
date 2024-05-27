@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function (){
 Route::resource('plates', PlateController::class);
 
 Route::get('/home', function () {
-    return redirect()->away('http://localhost:5174/home');
+    return redirect()->away('http://localhost:5174/');
 })->name('home');
 
 
