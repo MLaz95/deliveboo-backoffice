@@ -40,9 +40,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/registerRestaurant', [RestaurantController::class, 'create'])->name('registerRestaurant');
     Route::post('/registerRestaurant', [RestaurantController::class, 'store']);
     Route::get('/dashboard', [RestaurantController::class, 'index'])->name('restaurant');
-    // Rotta per la pagina di riepilogo degli ordini
+    
     // Rotta per la pagina di riepilogo degli ordini
     Route::get('/order-summary', [OrderController::class, 'summary'])->name('order-summary');
+
+    // Rotta per visualizzare i dettagli dell'ordine
+    Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 });
 
 Route::resource('plates', PlateController::class);

@@ -64,6 +64,7 @@ class OrderController extends Controller
         ]);
     }
 
+    // recuperiamo la lista degli ordini da passare alla pagina order-summary
     public function summary()
     {
         // Recupera tutti gli ordini
@@ -71,5 +72,14 @@ class OrderController extends Controller
 
         // Passa gli ordini alla vista
         return view('orders.order-summary', compact('orders'));
+    }
+
+    public function show($id)
+    {
+        // Recupera l'ordine specifico con gli id
+        $order = Order::with('plates')->findOrFail($id);
+        
+        // Passa l'ordine alla vista
+        return view('orders.order-detail', compact('order'));
     }
 }

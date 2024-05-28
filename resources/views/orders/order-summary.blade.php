@@ -15,6 +15,7 @@
                 <th scope="col">Address</th>
                 <th scope="col">Total</th>
                 <th scope="col">Created At</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,9 @@
                     <td>{{ $order->address }}</td>
                     <td>{{ $order->total }} €</td>
                     <td>{{ $order->created_at }}</td>
+                    <td>
+                        <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Show Order</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
