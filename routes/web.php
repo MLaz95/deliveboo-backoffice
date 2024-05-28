@@ -35,10 +35,14 @@ Route::middleware('auth')->group(function () {
 
 
 // routes related to restaurant management are handled by the RestaurantController
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->group(function () {
     Route::get('/registerRestaurant', [RestaurantController::class, 'create'])->name('registerRestaurant');
     Route::post('/registerRestaurant', [RestaurantController::class, 'store']);
     Route::get('/dashboard', [RestaurantController::class, 'index'])->name('restaurant');
+    // Rotta per la pagina di riepilogo degli ordini
+    Route::get('/order-summary', function () {
+        return view('orders.order-summary');
+    })->name('order-summary');
 });
 
 Route::resource('plates', PlateController::class);
