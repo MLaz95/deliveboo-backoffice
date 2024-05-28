@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Mail\NewOrder;
 use App\Models\Lead;
 use App\Models\Order;
+use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -39,8 +41,18 @@ class OrderController extends Controller
         $newLead->message = 'Order placed with total: ' . $newOrder->total . '€';
         $newLead->save();
 
-        // Invia email con i dettagli dell'ordine
+        // Invia email al consumatore con i dettagli dell'ordine
         Mail::to($customerData['email'])
+            ->send(new NewOrder($newOrder, $customerData));
+
+        // recupera ristorante dal piatto
+        $restaurant = Restaurant::where('id', $cart['items'][0]['restaurant_id'])
+                                ->first();
+        // recupera ristoratore dal ristorante
+        $owner = User::where('id', $restaurant->user_id)->first();
+
+        // Invia email al ristoratore con i dettagli dell'ordine
+        Mail::to($owner->email)
             ->send(new NewOrder($newOrder, $customerData));
 
         // Risposta al client
@@ -48,7 +60,7 @@ class OrderController extends Controller
             'success' => true,
             'message' => 'Ordine creato e email inviata correttamente',
             'request' => $request->all(),
-            'results' => $newOrder,
+            'results' => $owner,
         ]);
     }
 }
