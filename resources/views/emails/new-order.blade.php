@@ -1,18 +1,22 @@
-<h1>
-    Deliveboo: Nuovo ordine
-</h1>
+<!-- resources/views/emails/new-order.blade.php -->
 
-<p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Order</title>
+</head>
+<body>
+    <h1>New Order from {{ $order->name }} {{ $order->surname }}</h1>
+    <p>Email: {{ $customerData['email'] }}</p>
+    <p>Phone Number: {{ $order->phone_number }}</p>
+    <p>Address: {{ $order->address }}</p>
+    <p>Total: {{ $order->total }} &euro;</p>
+
+    <h2>Order Details</h2>
     <ul>
-        <li>
-            Da: {{$lead->name}}
-        </li>
-        <li>
-            Email: {{$lead->address}}
-        </li>
-        <li>
-            Messaggio: <br>
-            {{$lead->message}}
-        </li>
+        @foreach ($order->plates as $plate)
+            <li>{{ $plate->pivot->quantity }}x {{ $plate->name }} ({{ $plate->pivot->quantity * $plate->price }} &euro;)</li>
+        @endforeach
     </ul>
-</p>
+</body>
+</html>

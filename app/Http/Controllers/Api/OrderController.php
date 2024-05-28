@@ -32,32 +32,23 @@ class OrderController extends Controller
             $newOrder->plates()->attach($plate['id'], ['quantity' => $plate['quantity']]);
         }
 
-        // email
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required',
-        //     'address' => 'required|email',
-        //     'message' => 'required'
-        // ], [
-        //     'name.required' => "Devi inserire il tuo nome",
-        //     'address.required' => "Devi inserire la tua email",
-        //     'address.email' => "Devi inserire una mail corretta",
-        //     'message.required' => "Devi inserire un messaggio",
-        // ]);
-
-        //salvataggio del db
+        // Crea un nuovo lead e salva i dati nella tabella 'leads'
         $newLead = new Lead();
-        $newLead->fill($request->all());
+        $newLead->name = $customerData['billingAddress']['name'];
+        $newLead->address = $customerData['email'];
+        $newLead->message = 'Order placed with total: ' . $newOrder->total . '€';
         $newLead->save();
 
-        //invio mail
-        Mail::to('mikypupo@hotmail.it')->send(new NewOrder($newLead));
+        // Invia email con i dettagli dell'ordine
+        Mail::to($customerData['email'])
+            ->send(new NewOrder($newOrder, $customerData));
 
         // Risposta al client
         return response()->json([
             'success' => true,
-            'message' => 'Richiesta di contatto inviato correttamente',
+            'message' => 'Ordine creato e email inviata correttamente',
             'request' => $request->all(),
-            "results" => $newOrder,
+            'results' => $newOrder,
         ]);
     }
 }
