@@ -24,6 +24,10 @@ class OrderController extends Controller
         $newOrder->total = $cart['total'];
         $newOrder->save();
 
+        foreach($cart['items'] as $plate){
+            $newOrder->plates()->attach($plate['id'], ['quantity' => $plate['quantity']]);
+        }
+
         return response()->json([
             "success" => true,
             "results" => $newOrder,
