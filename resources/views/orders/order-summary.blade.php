@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($orders as $order)
+            @foreach ($orders->sortByDesc('created_at') as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->name }}</td>
@@ -28,7 +28,7 @@
                     <td>{{ $order->phone_number }}</td>
                     <td>{{ $order->address }}</td>
                     <td>{{ $order->total }} €</td>
-                    <td>{{ $order->created_at }}</td>
+                    <td>{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
                     <td>
                         <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Show Order</a>
                     </td>
