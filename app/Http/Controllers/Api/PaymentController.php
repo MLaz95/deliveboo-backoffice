@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
+use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
 {
@@ -24,6 +25,24 @@ class PaymentController extends Controller
 
     public function processPayment(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'formData.billingAddress.name' => 'required',
+            'formData.billingAddress.surname' => 'required',
+            'formData.email' => 'required|email',
+            'formData.billingAddress.address' => 'required',
+            'formData.billingAddress.phoneNumber' => 'required',
+        ], [
+            'required' => 'Please insert your :attribute.',
+            'email' => 'Please insert a valid email'
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'success' => false,
+                'error' => $validator->errors()
+            ]);
+        }
+
         $nonce = $request->input('paymentMethodNonce');
         $amount = $request->input('amount');
 
@@ -43,7 +62,7 @@ class PaymentController extends Controller
         ]);
 
         if ($result->success) {
-            return response()->json(['success' => true]);
+            return response()->json(['success' => true, 'data' => $request->all()]);
         } else {
             return response()->json(['success' => false, 'message' => $result->message]);
         }
