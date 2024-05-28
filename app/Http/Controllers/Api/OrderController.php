@@ -63,4 +63,13 @@ class OrderController extends Controller
             'results' => $owner,
         ]);
     }
+
+    public function summary()
+    {
+        // Recupera tutti gli ordini
+        $orders = Order::all();
+
+        // Passa gli ordini alla vista
+        return view('orders.order-summary', compact('orders'));
+    }
 }

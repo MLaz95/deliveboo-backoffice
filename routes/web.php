@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\PlateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
@@ -40,9 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/registerRestaurant', [RestaurantController::class, 'store']);
     Route::get('/dashboard', [RestaurantController::class, 'index'])->name('restaurant');
     // Rotta per la pagina di riepilogo degli ordini
-    Route::get('/order-summary', function () {
-        return view('orders.order-summary');
-    })->name('order-summary');
+    // Rotta per la pagina di riepilogo degli ordini
+    Route::get('/order-summary', [OrderController::class, 'summary'])->name('order-summary');
 });
 
 Route::resource('plates', PlateController::class);
