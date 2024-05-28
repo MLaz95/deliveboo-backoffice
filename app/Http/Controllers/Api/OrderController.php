@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -67,8 +68,15 @@ class OrderController extends Controller
     // recuperiamo la lista degli ordini da passare alla pagina order-summary
     public function summary()
     {
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+
+        $restaurant_id = $restaurant->id;
+
+        $orders = Order::whereHas('plates', function($query) use($restaurant_id){
+            $query->where('restaurant_id', $restaurant_id);
+        })->get();
         // Recupera tutti gli ordini
-        $orders = Order::all();
+        // $orders = Order::all();
 
         // Passa gli ordini alla vista
         return view('orders.order-summary', compact('orders'));
