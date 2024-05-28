@@ -1,6 +1,3 @@
-<!-- resources/views/emails/new-order.blade.php -->
-
-<!DOCTYPE html>
 <html>
 <head>
     <title>New Order</title>
