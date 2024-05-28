@@ -25,5 +25,6 @@
             </ul>
         </div>
     </div>
+    <a href="{{ route('order-summary') }}" class="btn btn-primary">Back</a>
 </div>
 @endsection
