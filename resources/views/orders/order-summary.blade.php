@@ -15,7 +15,7 @@
                 <th scope="col">Address</th>
                 <th scope="col">Total</th>
                 <th scope="col">Created At</th>
-                <th scope="col">Actions</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
                     <td>{{ $order->phone_number }}</td>
                     <td>{{ $order->address }}</td>
                     <td>{{ $order->total }} €</td>
-                    <td>{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
+                    <td class="text-danger fw-bold">{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
                     <td>
                         <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Show Order</a>
                     </td>
@@ -36,5 +36,9 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="text-center mt-4">
+        <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
+    </div>
 </div>
 @endsection
