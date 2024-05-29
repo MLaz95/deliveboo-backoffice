@@ -90,4 +90,10 @@ class OrderController extends Controller
         // Passa l'ordine alla vista
         return view('orders.order-detail', compact('order'));
     }
+
+    public function stats(){
+
+
+        return view('orders.order-stats');
+    }
 }

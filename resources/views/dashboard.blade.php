@@ -36,8 +36,8 @@
         
                             <div class="d-flex flex-column align-items-start gap-2">
                                 <a href="{{route('plates.index')}}" class="btn btn-primary text-decoration-none ">Menu</a>
-                                <a href="{{ route('order-summary') }}" class="btn btn-info">Ordes</a>
-                                <button href="#!" class="btn btn-secondary text-decoration-none" disabled>Statistics</button>
+                                <a href="{{ route('order-summary') }}" class="btn btn-info">Orders</a>
+                                <a href="{{ route('orders.stats') }}" class="btn btn-secondary text-decoration-none" disabled>Statistics</a>
                             </div>
                         </div>
                     </div>
