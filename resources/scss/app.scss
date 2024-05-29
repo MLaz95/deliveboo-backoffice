@@ -21,20 +21,20 @@
 }
 
 nav{
-    background-color: #3393a6;
-
-    color: #F6F3E4;
+    background-color:#f8ebde;
+    color: #d62300;
+    
     font-size: 25px;
-
-    font-family:"Pacifico", cursive;
-    text-shadow:2px 4px hsla(4, 98%, 66%, 0.7);
+    
+    
+    
     font-weight: 400;
     font-style: normal;
 
     z-index: 99;
     ul{
         li{
-            color: #F6F3E4;
+            color:#d62300;
 
             transition: .4s ease;
 
@@ -50,7 +50,8 @@ nav{
 }
 
 .all{
-    background-color: #3dc4df;
+    background-color:#f8ebde;
+
 
     height: calc(100% - 126px);
 }
