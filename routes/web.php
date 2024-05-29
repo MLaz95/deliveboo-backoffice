@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
 
     // Rotta per visualizzare i dettagli dell'ordine
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+
+    Route::get('/orders-stats', [OrderController::class, 'stats'])->name('orders.stats');
 });
 
 Route::resource('plates', PlateController::class);
