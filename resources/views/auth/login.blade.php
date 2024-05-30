@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="login-box ">
+<div class="login-box  bg-gradient">
     
     <div class="container">
         <div class="row justify-content-center">
@@ -55,7 +55,7 @@
     
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-success">
+                                    <button type="submit" class="btn btn-success px-3">
                                         {{ __('Login') }}
                                     </button>
     
