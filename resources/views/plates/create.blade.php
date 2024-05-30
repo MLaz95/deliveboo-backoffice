@@ -5,13 +5,13 @@
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Create a Plate</h1>
+                        <h1 class=" fw-bolder" >Create a Plate</h1>
                     </div>
     
-                    <div class="card-body">
+                    <div class="card-body bg">
                         <form method="POST" action="{{ route('plates.store') }}" enctype="multipart/form-data">
                             @csrf
     
