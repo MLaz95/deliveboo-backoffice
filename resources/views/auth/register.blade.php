@@ -1,7 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="register-box container pb-5 ">
+
+        
+
+        <div class="cards d-flex align-items-center justify-content-center flex-column">
+            <div class=" row w-100 pt-4 d-flex justify-content-center gap-3 text-center fw-bolder">
+                <h1 class="titleReg fw-bolder">Register now</h1>
+                <h1 class=" titleReg fw-bolder" >Join us and take your restaurant to the next level !</h1>
+                <!-- colonna 1 -->
+                <div class="my-col col-3 text-center ">
+                    
+                    <div class="containerIm">
+                    <img src="{{ asset('storage/branding/more-orders.svg') }}" alt="Descrizione immagine" class="img-fluid mb-2">
+                    </div>
+                    <h5 class="fw-bolder"> Deliveboo</h5>
+                    <p class="text-muted">"It is the meeting point between you and your potential customers, loyal to our platform thanks to farsighted investments in marketing campaigns and an ever richer offer of products and services.</p>
+                </div>
+
+                <!-- Colonna 3-->
+                <div class="my-col col-3 text-center ">
+
+                    <div class="containerIm">
+                    <img src="{{ asset('storage/branding/more-control.svg') }}" alt="Descrizione immagine" class="img-fluid mb-2">
+                </div>
+                    <h5 class="fw-bolder">Zero risks</h5>
+                    <p class="text-muted">There are no fixed membership fees. Our revenue depends on commissions, and therefore on the success of your business. Additionally, we regularly offer deals, discounts, and competitive prices on packaging, delivery bags, and rider apparel.</p>
+                </div>
+
+                <!-- Colonna 3 -->
+                <div class="my-col col-3 text-center ">
+
+                    <div class="containerIm">
+                    <img src="{{ asset('storage/branding/consegne.svg') }}" alt="Descrizione immagine" class="img-fluid mb-2">
+                </div>
+                    <h5 class="fw-bolder">Customized deliveries</h5>
+                    <p class="text-muted">Our services, the opportunities provided by delivery options, and our smart support can be beneficial to businesses like yours, which are the cornerstone of our business.</p>
+                </div>
+            </div>
+        </div>    
+
+    <div class="register-box container  ">
+
+    
+    
+
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
