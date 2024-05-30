@@ -147,7 +147,7 @@
                             </div>
                             <div class="col-2 d-flex flex-column justify-content-end align-items-center ">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary" onclick="validate()">
+                                    <button type="submit" class="btn btn-success px-4" onclick="validate()">
                                         {{ __('Submit') }}
                                     </button>
                                 </div>

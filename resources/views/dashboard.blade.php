@@ -3,14 +3,14 @@
 @section('content')
 <div class="dashboard">
     
-    <div class="container">
-        <h2 class="fs-4 text-light  my-4">
+    <div class="container text-center cardB ">
+        <h2 class="name fs-3   my-4  fw-bolder">
             Welcome Back {{$user->name}}
         </h2>
-        <div class="row justify-content-center">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
+        <div class="row justify-content-center ">
+            <div class="col-8">
+                <div class="cards  rounded-2">
+                    <div class="card-header fw-bolder">
                         <h1>{{$restaurant->name_res}}</h1>
                     </div>
                     
@@ -21,23 +21,23 @@
                         </div>
                         @endif
                         
-                        <div style="max-width: 500px; max-height: 500px;">
-                            <img class="" src="{{ asset('storage/' . $restaurant->img_res) }}" alt="{{ $restaurant->name }}" style="width: 100%;">
+                        <div style="max-width: 300px; max-height: 400px;">
+                            <img class=" rounded-5 p-3" src="{{ asset('storage/' . $restaurant->img_res) }}" alt="{{ $restaurant->name }}" style="width: 100%;">
                         </div>
                         
                         <div class="d-flex flex-column gap-3">
-                            <h2>{{$restaurant->address_res}}</h2>
-                            <div class="d-flex gap-2 align-items-center">
+                            <h3 class=" adress text-start ">{{$restaurant->address_res}}</h3>
+                            <div class=" d-flex gap-2 align-items-center fw-bolder">
                                 <div>Categories:</div>
                                 @foreach($restaurant->categories as $category)
-                                <span class="badge rounded-pill bg-light rounded rounded-3 text-black ">{{ $category->name }}</span>
+                                <span class="categories badge rounded-pill  rounded rounded-3 text-black ">{{ $category->name }}</span>
                                 @endforeach
                             </div>
         
                             <div class="d-flex flex-column align-items-start gap-2">
                                 <a href="{{route('plates.index')}}" class="btn btn-primary text-decoration-none ">Menu</a>
-                                <a href="{{ route('order-summary') }}" class="btn btn-info">Orders</a>
-                                <a href="{{ route('orders.stats') }}" class="btn btn-secondary text-decoration-none" disabled>Statistics</a>
+                                <a href="{{ route('order-summary') }}" class="btn btn-danger">Orders</a>
+                                <a href="{{ route('orders.stats') }}" class="btn btn-success text-decoration-none" disabled>Statistics</a>
                             </div>
                         </div>
                     </div>
