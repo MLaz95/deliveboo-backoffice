@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container py-5">
-    <h1 class="text-center">Order Details</h1>
 
-    <div class="card">
-        <div class="card-header">
+    <div class="card rounded-3" style= "background-color: rgba(255, 255, 255, 0.427); padding: 20px; box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;">
+        <h1 class="text-center">Order Details</h1>
+        <div>
             <h2>Order ID: {{ $order->id }}</h2>
         </div>
         <div class="card-body">
@@ -32,8 +32,8 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer">
-            <a href="{{ route('order-summary') }}" class="btn btn-primary">Back</a>
+        <div>
+            <a href="{{ route('order-summary') }}" class="btn btn-primary"><i class="fa-solid fa-left-long fs-3"></i></a>
         </div>
     </div>
 </div>

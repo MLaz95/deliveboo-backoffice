@@ -27,7 +27,7 @@
                                     <td>{{ $order->total }} €</td>
                                     <td class="text-danger fw-bold">{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
                                     <td>
-                                        <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Show order</a>
+                                        <a href="{{ route('orders.show', $order->id) }}" class="btn btn-success">Show order</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -42,7 +42,7 @@
                 {!! $chartjs->render() !!}
             </div>
             <div class="text-center mt-4">
-                <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
+                <a href="{{ route('restaurant') }}" class="btn btn-primary">Back to Restaurant</a>
             </div>
         </div>
     </div>
