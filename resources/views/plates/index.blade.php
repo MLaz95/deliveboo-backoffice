@@ -7,7 +7,7 @@
        
         <div class="row justify-content-center">
             <div class="col-12">
-                <div class="card p-3">
+                <div class="card p-3 pb-5">
                     <div class="my-4 d-flex flex-column flex-lg-row justify-content-between align-items-center">
                         <div class="mb-2 mb-lg-0">
                             <a class="btn btn-primary text-decoration-none fs-3" href="{{ route('restaurant') }}"><i class="fa-solid fa-left-long"></i></a>
@@ -26,7 +26,7 @@
                         @foreach ($plates as $plate)
                         <div class="col">
                             <a href="{{ route('plates.show', $plate->id) }}" class="text-decoration-none">
-                                <div class="card m-2 border-1 rounded-5 shadow-lg">
+                                <div class="card m-2 border-1 rounded-5 shadow-lg h-100">
                                     <img src="{{ asset('storage/' . $plate->image) }}" class="card-img-top object-fit-cover" alt="{{ $plate->name }}" style="height: 250px;">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $plate->name }}</h5>
