@@ -86,8 +86,8 @@
     
                             
                                 <div class="d-flex gap-5 justify-content-center">
-                                    <a class="btn text-decoration-none text-white" style="background-color: #d62300" href="{{route('plates.show', $plate->id)}}">Back</a>
-                                    <button type="submit" class="btn btn-primary text-white border-0" style="background-color: #279647">
+                                    <a class="btn text-decoration-none text-white btn-primary" href="{{route('plates.show', $plate->id)}}"><i class="fa-solid fa-left-long fs-3"></i></a>
+                                    <button type="submit" class="btn btn-primary text-white border-0 fs-5" style="background-color: #279647">
                                         Update
                                     </button>
                                 </div>
