@@ -3,15 +3,6 @@
 @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-lg-5">
-            <div style="background-color: white; padding: 20px;">
-                <h1 class="text-center">Stats</h1>
-                {!! $chartjs->render() !!}
-                <div class="text-center mt-4">
-                    <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
-                </div>
-            </div>
-        </div>
         <div class="col-lg-7">
             <div style="background-color: white; padding: 20px; max-height: 800px; overflow-y: auto;">
                 <h1 class="text-center">Order Summary</h1>
@@ -47,6 +38,15 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div style="background-color: white; padding: 20px;">
+                <h1 class="text-center">Stats</h1>
+                {!! $chartjs->render() !!}
+                <div class="text-center mt-4">
+                    <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
+                </div>
             </div>
         </div>
     </div>
