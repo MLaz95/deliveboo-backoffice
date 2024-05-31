@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7">
-                <div class="card">
-                    <div class="card-header">
+                <div class="card" style="background-color: #f3d9bf; padding: 20px; box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;">
+                    <div>
                         <h1 class=" fw-bolder" >Create a Plate</h1>
                     </div>
     
@@ -87,8 +87,9 @@
                             </div>
     
                             <div class="mb-4 row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                <div class="col-md-6 offset-md-4 d-flex gap-5">
+                                    <a class="btn text-decoration-none text-white" style="background-color: #d62300" href="{{ route('plates.index') }}">Back</a>
+                                    <button type="submit" class="btn btn-primary border-0" style="background-color: #279647">
                                         Create
                                     </button>
                                 </div>

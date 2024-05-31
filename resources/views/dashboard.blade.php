@@ -34,10 +34,10 @@
                                 @endforeach
                             </div>
         
-                            <div class="d-flex flex-column align-items-start gap-2">
-                                <a href="{{route('plates.index')}}" class="btn btn-primary text-decoration-none ">Menu</a>
-                                <a href="{{ route('order-summary') }}" class="btn btn-danger">Orders</a>
-                                <a href="{{ route('orders.stats') }}" class="btn btn-success text-decoration-none" disabled>Statistics</a>
+                            <div class="d-flex align-items-start gap-4 pt-4 ps-5">
+                                <a href="{{route('plates.index')}}" class="btn text-decoration-none text-white" style="background-color: #e67e22">Menu</a>
+                                <a href="{{ route('order-summary') }}" class="btn text-white" style="background-color: #279647">Orders</a>
+                                {{-- <a href="{{ route('orders.stats') }}" class="btn btn-success text-decoration-none" disabled>Statistics</a> --}}
                             </div>
                         </div>
                     </div>
