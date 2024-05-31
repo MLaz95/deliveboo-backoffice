@@ -7,15 +7,15 @@
             <div style="background-color: white; padding: 20px;">
                 <h1 class="text-center">Stats</h1>
                 {!! $chartjs->render() !!}
-            </div>
-            <div class="text-center mt-4">
-                <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
+                <div class="text-center mt-4">
+                    <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
+                </div>
             </div>
         </div>
         <div class="col-lg-7">
-            <div style="background-color: white; padding: 20px;">
+            <div style="background-color: white; padding: 20px; max-height: 800px; overflow-y: auto;">
                 <h1 class="text-center">Order Summary</h1>
-                <table class="table table-striped mt-4 overflow-auto">
+                <table class="table table-striped mt-4">
                     <thead>
                         <tr>
                             <th scope="col">Order ID</th>
@@ -41,7 +41,7 @@
                                 <td>{{ $order->total }} €</td>
                                 <td class="text-danger fw-bold">{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
                                 <td>
-                                    <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Show Order</a>
+                                    <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Show order</a>
                                 </td>
                             </tr>
                         @endforeach
