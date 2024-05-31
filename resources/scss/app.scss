@@ -55,3 +55,25 @@ nav{
 
     height: calc(104vh - 126px);
 }
+
+// barra di scorrimento
+::-webkit-scrollbar {
+    width: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+    border-radius: 10px; 
+}
+
+
+div::-webkit-scrollbar {
+    display: none; 
+}
+
+
+div::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+    border-radius: 10px; 
+}
+

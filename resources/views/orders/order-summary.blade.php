@@ -4,49 +4,45 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-7">
-            <div style="background-color: white; padding: 20px; max-height: 800px; overflow-y: auto;">
+            <div style="height: 820px;  background-color: rgba(255, 255, 255, 0.427); padding: 20px; box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;" class="rounded-3">
                 <h1 class="text-center">Order Summary</h1>
-                <table class="table table-striped mt-4">
-                    <thead>
-                        <tr>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Surname</th>
-                            {{-- <th scope="col">Email</th> --}}
-                            {{-- <th scope="col">Phone Number</th> --}}
-                            {{-- <th scope="col">Address</th> --}}
-                            <th scope="col">Total</th>
-                            <th scope="col">Created At</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($allOrders->sortByDesc('created_at') as $order)
+                <div style= "overflow-y: auto; max-height: 700px">
+                    <table class="table mt-4" style="--bs-table-bg: trasparent">
+                        <thead>
                             <tr>
-                                <td>{{ $order->id }}</td>
-                                <td>{{ $order->name }}</td>
-                                <td>{{ $order->surname }}</td>
-                                {{-- <td>{{ $order->email }}</td> --}}
-                                {{-- <td>{{ $order->phone_number }}</td> --}}
-                                {{-- <td>{{ $order->address }}</td> --}}
-                                <td>{{ $order->total }} €</td>
-                                <td class="text-danger fw-bold">{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
-                                <td>
-                                    <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Show order</a>
-                                </td>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col"></th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($allOrders->sortByDesc('created_at') as $order)
+                                <tr>
+                                    <td>{{ $order->id }}</td>
+                                    <td>{{ $order->name }}</td>
+                                    <td>{{ $order->surname }}</td>
+                                    <td>{{ $order->total }} €</td>
+                                    <td class="text-danger fw-bold">{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
+                                    <td>
+                                        <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Show order</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col-lg-5">
-            <div style="background-color: white; padding: 20px;">
+            <div style="background-color: rgba(255, 255, 255, 0.427); padding: 20px; box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;" class="border-3 rounded-3">
                 <h1 class="text-center">Stats</h1>
                 {!! $chartjs->render() !!}
-                <div class="text-center mt-4">
-                    <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
-                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
             </div>
         </div>
     </div>
