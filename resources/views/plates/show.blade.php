@@ -3,37 +3,36 @@
 @section('content')
 <div class="show-box">
     
-    <div class="container">
+    <div class="container d-flex flex-column align-items-center">
       
-        <div class="my-4 d-flex justify-content-between align-items-center">
-          <div>
-            <a class="btn btn-primary text-decoration-none " href="{{ route('plates.index') }}">Back</a>
-          </div>
-          <div>
-            <a class="btn btn-warning  text-decoration-none " href="{{ route('plates.edit', $plate->id) }}">Edit</a>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Delete Plate
-            </button>
-          </div>
-        </div>
-    
         <div class="row justify-content-center">
-            <div class="col">
-                <div class="d-flex gap-3">
+            <div class="col 6 rounded 4" style="background-color: #f3d9bf; padding: 20px; box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;"">
+                <div class="d-flex flex-column justify-content-center gap-3">
                   <div>
-                    <img src="{{ asset('storage/' . $plate->image) }}" class="img-fluid" alt="@" style="max-height: 500px">
+                    <img src="{{ asset('storage/' . $plate->image) }}" class="img-fluid w-100" alt="@" style="max-height: 400px">
                   </div>
                   <div>
-                      <h2>{{ $plate->name }}</h2>
-                      <p>Ingredients: {{ $plate->ingredients }}</p>
-                      <p>Price: {{ $plate->price }}€</p>
+                      <h2 class="text-center py-3 fs-1" style= "font-family: 'Mibery', sans-serif;">{{ $plate->name }}</h2>
+                      <p> <span class="fw-bold text-uppercase fs-5">Ingredients:</span> {{ $plate->ingredients }}</p>
+                      <p> <span class="fw-bold text-uppercase fs-5">Price:</span> {{ $plate->price }}€</p>
                       @if ($plate->visible == true)
-                          <p>This plate is visible</p>
+                          <p class="fw-bold fst-italic">This plate is visible</p>
                       @else
                           <p>This plate is not visible</p>
                       @endif
                   </div>
                 </div>
+                <div class="my-4 d-flex justify-content-between align-items-center">
+                    <div>
+                      <a class="btn btn-primary text-decoration-none " href="{{ route('plates.index') }}">Back</a>
+                    </div>
+                    <div>
+                      <a class="btn text-decoration-none text-white" style="background-color: #279647" href="{{ route('plates.edit', $plate->id) }}">Edit plate</a>
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Delete Plate
+                      </button>
+                    </div>
+                  </div>
             </div>
         </div>
     
