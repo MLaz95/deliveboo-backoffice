@@ -11,7 +11,7 @@
             <div class="col-8">
                 <div class="cards  rounded-2">
                     <div class="card-header fw-bolder">
-                        <h1>{{$restaurant->name_res}}</h1>
+                        <h1 class=" fw-bold" >{{$restaurant->name_res}}</h1>
                     </div>
                     
                     <div class="card-body d-flex gap-3 flex-column flex-md-row">
@@ -26,7 +26,7 @@
                         </div>
                         
                         <div class="d-flex flex-column gap-3">
-                            <h3 class=" adress text-start ">{{$restaurant->address_res}}</h3>
+                            <h3 class=" adress text-start  text-black"> <i class="fa-light fa-location-dot"></i> {{$restaurant->address_res}}</h3>
                             <div class=" d-flex gap-2 align-items-center fw-bolder">
                                 <div>Categories:</div>
                                 @foreach($restaurant->categories as $category)
