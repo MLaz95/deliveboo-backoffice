@@ -106,7 +106,7 @@ class OrderController extends Controller
         // Loop attraverso i 12 mesi precedenti, inclusi i mesi attuali
         for ($i = 0; $i < 12; $i++) {
             // Ottieni il mese corrente
-            $currentMonth = now()->subMonthsNoOverflow(3)->format('Y-m');
+            $currentMonth = now()->subMonthsNoOverflow($i)->format('Y-m');
 
             // Recupera gli ordini relativi al ristorante corrente per il mese corrente
             $orders = Order::whereHas('plates', function ($query) use ($restaurant_id) {
