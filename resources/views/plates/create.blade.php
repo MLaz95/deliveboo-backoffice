@@ -30,7 +30,7 @@
                             </div>
     
                             <div class="mb-4 row">
-                                <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingrediets *') }}</label>
+                                <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingredients *') }}</label>
     
                                 <div class="col-md-6">
                                     <textarea id="ingredients" rows="5" class="form-control h-100 @error('ingredients') is-invalid @enderror" name="ingredients"  autocomplete="ingredients" autofocus>{{ old('ingredients') }}</textarea>    
