@@ -1,4 +1,6 @@
 @use "../variables/variables" as *;
+
+
 .containerIm{
     height: 95px;
 }
@@ -9,34 +11,39 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .titleReg{
-    font-family: "Open Sans", sans-serif;
+    
+    font-family: $mibery-font;
+    
+    
     color: #d62300 ;
 }
 
+
 .register-box{
-   font-family: "Open Sans", sans-serif;
+    
+   
     color: #d62300 ;
     font-weight: bolder;
     
     height: 100vh;
 
     .card{
-        background-color: #f8ebde;
+        background-color: #f3d9bf;
 
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         
-}
+    }
 
-h1{
-    color: #d62300 ;
-}
-h3{
-    color: black ;
-    font-weight: bold;
-}
-label{
-    border: 1px rgb(85, 85, 85);
-}
+    h1{
+        color: #d62300 ;
+    }
+    h3{
+        color: black ;
+        font-weight: bold;
+    }
+    label{
+        border: 1px rgb(85, 85, 85);
+    }
 
 }
 
