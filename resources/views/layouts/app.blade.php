@@ -142,7 +142,7 @@
                     <div class="my-col col-sm-4 col-md-4 col-lg-2  col-12 p-3 text-center mb-4">
                         <h5 class="text-uppercase">Legal Notices</h5>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="text-white text-decoration-none ">Temrs and Conditions</a>
+                            <li><a href="#" class="text-white text-decoration-none ">Terms and Conditions</a>
                             </li>
                             <li><a href="#" class="text-white text-decoration-none ">Privacy Police</a></li>
                             <li><a href="#" class="text-white text-decoration-none ">Cookies</a></li>
