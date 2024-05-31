@@ -68,16 +68,15 @@ class OrderController extends Controller
     // recuperiamo la lista degli ordini da passare alla pagina order-summary
     public function summary()
     {
+
         $restaurant = Restaurant::where('user_id', Auth::id())->first();
 
         $restaurant_id = $restaurant->id;
 
-        $orders = Order::whereHas('plates', function ($query) use ($restaurant_id) {
+        $allOrders = Order::whereHas('plates', function ($query) use ($restaurant_id) {
             $query->where('restaurant_id', $restaurant_id);
         })->get();
-        // Recupera tutti gli ordini
-        // $orders = Order::all();
-         // Recupera l'ID del ristorante dell'utente autenticato
+        
          $restaurant = Restaurant::where('user_id', Auth::id())->first();
 
 
@@ -140,10 +139,9 @@ class OrderController extends Controller
                  ],
              ])
            
-
         ->options([]);
         // Passa gli ordini alla vista
-        return view('orders.order-summary', compact('chartjs','orders'));
+        return view('orders.order-summary', compact('chartjs','allOrders'));
     }
 
     public function show($id)

@@ -5,6 +5,7 @@
     <div style="width: 50%; background-color: white;">
         {!! $chartjs->render() !!}
     </div>
+
     <h1 class="text-center">Order Summary</h1>
 
     <table class="table table-striped mt-4">
@@ -22,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($orders->sortByDesc('created_at') as $order)
+            @foreach ($allOrders->sortByDesc('created_at') as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->name }}</td>
