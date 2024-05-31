@@ -1,31 +1,32 @@
-.dashboard{
-
-padding-top: 90px;
-
-
-height: calc(100vh - 120px);
+.dashboard {
+    padding-top: 90px;
+    height: calc(100vh - 120px);
 }
-.cards{
-   
+
+.cards {
+
     padding-bottom: 20px;
     margin-bottom: 40px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-.cardB{
-   
+
+.cardB {
+
     padding-bottom: 20px;
     margin-bottom: 40px;
-    
+
 }
 
-.name{
-    
+.name {
+
     color: #d62300;
 }
-.adress{
-    font-size:100%;
+
+.adress {
+    font-size: 100%;
 }
-.categories{
-    background-color: #f8ebde ;
+
+.categories {
+    background-color: #f8ebde;
     border: solid 1px black;
 }
