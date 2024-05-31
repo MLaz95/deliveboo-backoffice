@@ -167,11 +167,11 @@
                         <div class="text-center">
                             <h5 class="text-uppercase">DOWNLOAD APP</h5>
                             <div class="d-flex gap-3 flex-column align-items-center ">
-                                <img class="small-image w-50  "
-                                    :src="'http://localhost:8000/storage/' + 'download_images/appstore.png'"
+                                <img class="small-image w-50 "
+                                    src="{{ asset('storage/download_images/appstore.png') }}"
                                     alt="App Store">
-                                <img class="small-image w-50  "
-                                    :src="'http://localhost:8000/storage/' + 'download_images/playstore.png'"
+                                <img class="small-image w-50 "
+                                    src="{{ asset('storage/download_images/playstore.png') }}"
                                     alt="App Store">
                             </div>
                         </div>
