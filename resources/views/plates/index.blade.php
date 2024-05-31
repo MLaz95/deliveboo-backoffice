@@ -15,14 +15,14 @@
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card">
-                    <div class="card-header">
-                        <h1>Your Plates</h1>
+                    <div class="card-header fw-bolder text-center">
+                        <h1 class=" fw-bold ">Your Plates</h1>
                     </div>
                     <div class="row row-cols-1 row-cols-lg-4">
                         @foreach ($plates as $plate)
-                        <div class="col">
+                        <div class="col rounded-4">
                             <a href="{{ route('plates.show', $plate->id) }}" class="text-decoration-none">
-                                <div class="card m-3 " style="width: 18rem;">
+                                <div class="card m-2 border-1 rounded-5 shadow-lg" style="width: 18rem;">
                                     <img src="{{ asset('storage/' . $plate->image) }}" class="card-img-top object-fit-cover"
                                         alt="{{ $plate->name }}" style="height: 250px;">
                                     <div class="card-body">
