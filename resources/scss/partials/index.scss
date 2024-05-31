@@ -1,5 +1,23 @@
 .index-box{
     padding-top: 100px;
-
+    
     height: calc(100vh - 126px);
+}
+
+.card{
+    background-color: #f3d9bf;
+
+    h1{
+        color: black;
+        
+    }
+
+     h5{
+        color: #d62300 ;
+        font-weight: bolder;
+     }
+
+     img{
+        border-radius:20px;
+     }
 }
