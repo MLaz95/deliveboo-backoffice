@@ -88,8 +88,8 @@
     
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4 d-flex gap-5">
-                                    <a class="btn text-decoration-none text-white" style="background-color: #d62300" href="{{ route('plates.index') }}">Back</a>
-                                    <button type="submit" class="btn btn-primary border-0" style="background-color: #279647">
+                                    <a class="btn btn-primary text-decoration-none" href="{{ route('plates.index') }}"><i class="fa-solid fa-left-long fs-3"></i></a>
+                                    <button type="submit" class="btn btn-primary border-0 fs-5" style="background-color: #279647">
                                         Create
                                     </button>
                                 </div>
