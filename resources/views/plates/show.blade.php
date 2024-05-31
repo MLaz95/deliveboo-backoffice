@@ -24,12 +24,12 @@
                 </div>
                 <div class="my-4 d-flex justify-content-between align-items-center">
                     <div>
-                      <a class="btn btn-primary text-decoration-none " href="{{ route('plates.index') }}">Back</a>
+                      <a class="btn btn-primary text-decoration-none " href="{{ route('plates.index') }}"><i class="fa-solid fa-left-long fs-3"></i></a>
                     </div>
                     <div>
-                      <a class="btn text-decoration-none text-white" style="background-color: #279647" href="{{ route('plates.edit', $plate->id) }}">Edit plate</a>
+                      <a class="btn text-decoration-none text-white" style="background-color: #279647" href="{{ route('plates.edit', $plate->id) }}"><i class="fa-solid fa-pen-to-square fs-3"></i></a>
                       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Delete Plate
+                        <i class="fa-solid fa-trash-can fs-3"></i>
                       </button>
                     </div>
                   </div>
