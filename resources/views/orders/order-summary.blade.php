@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container py-5">
+    <div style="width: 50%; background-color: white;">
+        {!! $chartjs->render() !!}
+    </div>
     <h1 class="text-center">Order Summary</h1>
 
     <table class="table table-striped mt-4">

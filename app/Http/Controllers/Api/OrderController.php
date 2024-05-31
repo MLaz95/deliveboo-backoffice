@@ -77,9 +77,73 @@ class OrderController extends Controller
         })->get();
         // Recupera tutti gli ordini
         // $orders = Order::all();
+         // Recupera l'ID del ristorante dell'utente autenticato
+         $restaurant = Restaurant::where('user_id', Auth::id())->first();
 
+
+         // Recupera l'ID del ristorante
+         $restaurant_id = $restaurant->id;
+ 
+         // Inizializza un array vuoto per i totali mensili
+         $monthlyTotals = [];
+ 
+         // Loop attraverso i 12 mesi precedenti, inclusi i mesi attuali
+         for ($i = 0; $i < 12; $i++) {
+             // Ottieni il mese corrente
+             $currentMonth = now()->subMonthsNoOverflow($i)->format('Y-m');
+ 
+             // Recupera gli ordini relativi al ristorante corrente per il mese corrente
+             $orders = Order::whereHas('plates', function ($query) use ($restaurant_id) {
+                 $query->where('restaurant_id', $restaurant_id);
+             })->whereYear('created_at', now()->subMonthsNoOverflow($i)->year)
+                 ->whereMonth('created_at', now()->subMonthsNoOverflow($i)->month)
+                 ->get();
+ 
+             // Calcola il totale degli ordini per il mese corrente
+             $monthlyTotals[$currentMonth] = $orders->sum('total');
+         }
+         // Ottieni l'elenco dei mesi nell'ordine corretto
+         
+         // Riempire gli eventuali mesi mancanti con totali nulli
+         for ($i = 0; $i < 12; $i++) {
+             $currentMonth = now()->subMonthsNoOverflow($i)->format('Y-m');
+             if (!isset($monthlyTotals[$currentMonth])) {
+                 $monthlyTotals[$currentMonth] = 0;
+             }
+         }
+ 
+         $sorted = ksort($monthlyTotals);
+         
+         $labels = array_keys($monthlyTotals);
+         // Ordina l'array per garantire che i mesi siano in ordine cronologico
+         
+ 
+         // Estrai i totali mensili
+         $totals = array_values($monthlyTotals);
+ 
+         $chartjs = app()->chartjs
+             ->name('barChart')
+             ->type('bar')
+             ->size(['width' => 400, 'height' => 200])
+             ->labels($labels)
+             ->datasets([
+                 [
+                     "label" => "Totals",
+                     'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                     'borderColor' => "rgba(38, 185, 154, 0.7)",
+                     "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                     "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                     "pointHoverBackgroundColor" => "#fff",
+                     "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                     "data" => $totals,
+                     "fill" => false,
+                 ],
+             ])
+           
+
+        ->options([]);
         // Passa gli ordini alla vista
-        return view('orders.order-summary', compact('orders'));
+        return view('orders.order-summary', compact('chartjs','orders'));
     }
 
     public function show($id)
