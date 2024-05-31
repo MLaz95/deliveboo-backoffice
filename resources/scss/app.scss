@@ -22,8 +22,8 @@
 
 // NAVBAR
 nav {
-    background-color: #f8ebde;
-    color: #d62300;
+    background-color: $color-cream;
+    color: $color-red;
     font-size: 25px;
     font-weight: 400;
     font-style: normal;
@@ -31,7 +31,7 @@ nav {
 
     ul {
         li {
-            color: #d62300;
+            color: $color-red;
 
             transition: .4s ease;
 
@@ -49,7 +49,7 @@ nav {
 
 .navbar-nav {
     a {
-        color: #d62300;
+        color: $color-red;
         font-weight: bolder;
         font-size: large;
     }
@@ -57,19 +57,19 @@ nav {
 
 // MAIN CONTAINER
 .all {
-    background-color: #f8ebde;
+    background-color: $color-cream;
     height: calc(100% - 126px);
 }
 
 // FOOTER
 .my-footer {
     min-height: 450px;
-    background-color: #f3ad6c;
+    background-color: $color-mustard;
 
     .my-col {
         border-radius: 25px;
         box-shadow: -10px -10px 30px 0 #fec57f, 10px 10px 30px 0 #cc894c;
-        border: 1px solid #f3ad6c;
+        border: 1px solid $color-mustard;
     }
 
     h5 {
@@ -123,23 +123,23 @@ nav {
     }
 }
 
-// barra di scorrimento
-::-webkit-scrollbar {
-    width: 10px;
-}
+// // barra di scorrimento
+// ::-webkit-scrollbar {
+//     width: 10px;
+// }
 
-::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 10px;
-}
-
-
-div::-webkit-scrollbar {
-    display: none;
-}
+// ::-webkit-scrollbar-thumb {
+//     background-color: transparent;
+//     border-radius: 10px;
+// }
 
 
-div::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 10px;
-}
+// div::-webkit-scrollbar {
+//     display: none;
+// }
+
+
+// div::-webkit-scrollbar-thumb {
+//     background-color: transparent;
+//     border-radius: 10px;
+// }
