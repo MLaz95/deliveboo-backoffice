@@ -9,6 +9,10 @@
     <a href="{{ route('restaurant') }}" class="btn btn-secondary">Back to Restaurant</a>
 </div>
 
+@php
+    // @dd($monthlyTotals)
+@endphp
+
 {{-- @dd($totals) --}}
 
 {{-- <ul>

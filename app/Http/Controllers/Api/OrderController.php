@@ -106,31 +106,33 @@ class OrderController extends Controller
         // Loop attraverso i 12 mesi precedenti, inclusi i mesi attuali
         for ($i = 0; $i < 12; $i++) {
             // Ottieni il mese corrente
-            $currentMonth = now()->subMonths($i)->format('Y-m');
+            $currentMonth = now()->subMonthsNoOverflow(3)->format('Y-m');
 
             // Recupera gli ordini relativi al ristorante corrente per il mese corrente
-            $orders = Order::whereHas('plates', function ($query) use ($restaurant_id, $currentMonth) {
+            $orders = Order::whereHas('plates', function ($query) use ($restaurant_id) {
                 $query->where('restaurant_id', $restaurant_id);
-            })->whereYear('created_at', now()->subMonths($i)->year)
-                ->whereMonth('created_at', now()->subMonths($i)->month)
+            })->whereYear('created_at', now()->subMonthsNoOverflow($i)->year)
+                ->whereMonth('created_at', now()->subMonthsNoOverflow($i)->month)
                 ->get();
 
             // Calcola il totale degli ordini per il mese corrente
             $monthlyTotals[$currentMonth] = $orders->sum('total');
         }
         // Ottieni l'elenco dei mesi nell'ordine corretto
-        $labels = array_keys(array_reverse($monthlyTotals));
-
+        
         // Riempire gli eventuali mesi mancanti con totali nulli
         for ($i = 0; $i < 12; $i++) {
-            $currentMonth = now()->subMonths($i)->format('Y-m');
+            $currentMonth = now()->subMonthsNoOverflow($i)->format('Y-m');
             if (!isset($monthlyTotals[$currentMonth])) {
                 $monthlyTotals[$currentMonth] = 0;
             }
         }
 
+        $sorted = ksort($monthlyTotals);
+        
+        $labels = array_keys($monthlyTotals);
         // Ordina l'array per garantire che i mesi siano in ordine cronologico
-        ksort($monthlyTotals);
+        
 
         // Estrai i totali mensili
         $totals = array_values($monthlyTotals);
@@ -157,6 +159,6 @@ class OrderController extends Controller
 
 
         // Passa i dati alla vista
-        return view('orders.order-stats', compact('chartjs', 'totals'));
+        return view('orders.order-stats', compact('chartjs', 'totals', 'monthlyTotals'));
     }
 }
