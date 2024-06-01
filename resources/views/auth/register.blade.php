@@ -6,10 +6,10 @@
 
     <div class="cards d-flex align-items-center justify-content-center flex-column">
         <div class=" row w-100 pt-4 d-flex justify-content-center gap-3 text-center ">
-            <h1 class="titleReg">Register now</h1>
+            <h1 class="titleReg fw-bold">Register now</h1>
             <h3 class=" titleReg" >Join us and take your restaurant to the next level !</h3>
             <!-- colonna 1 -->
-            <div class="my-col col-3 text-center ">
+            <div class="my-col col-12 col-lg-3  text-center ">
                 
                 <div class="containerIm">
                 <img src="{{ asset('storage/branding/more-orders.svg') }}" alt="Descrizione immagine" class="img-fluid mb-2">
@@ -19,7 +19,7 @@
             </div>
 
             <!-- Colonna 3-->
-            <div class="my-col col-3 text-center ">
+            <div class="my-col col-12 col-lg-3 text-center ">
 
                 <div class="containerIm">
                 <img src="{{ asset('storage/branding/more-control.svg') }}" alt="Descrizione immagine" class="img-fluid mb-2">
@@ -29,7 +29,7 @@
             </div>
 
             <!-- Colonna 3 -->
-            <div class="my-col col-3 text-center ">
+            <div class="my-col col-12 col-lg-3 text-center ">
 
                 <div class="containerIm">
                 <img src="{{ asset('storage/branding/consegne.svg') }}" alt="Descrizione immagine" class="img-fluid mb-2">
@@ -40,12 +40,9 @@
         </div>
     </div>    
 
-    <div class="register-box container  ">
+    <div class="register-box container">
 
-    
-    
-
-        <div class=" row justify-content-center">
+        <div class="row justify-content-center">
             <div class=" col-md-12">
                 <div class="card">
                     <div class="card-header">
