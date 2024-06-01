@@ -14,7 +14,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Total</th>
-                                <th scope="col">Created At</th>
+                                <th scope="col" class="d-none d-md-block">Created At</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -25,7 +25,7 @@
                                     <td>{{ $order->name }}</td>
                                     <td>{{ $order->surname }}</td>
                                     <td>{{ $order->total }} €</td>
-                                    <td class="text-danger fw-bold">{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
+                                    <td class="text-danger fw-bold d-none d-md-block">{{ \Carbon\Carbon::parse($order->created_at)->isoFormat('D MMMM YYYY, HH:mm') }}</td>
                                     <td>
                                         <a href="{{ route('orders.show', $order->id) }}" class="btn btn-success" style="font-size: 11px">Show order</a>
                                     </td>
