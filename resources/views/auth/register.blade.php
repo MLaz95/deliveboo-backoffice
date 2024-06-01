@@ -52,10 +52,11 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" onsubmit="comparePwd()">
                             @csrf
-                            <div class="rov d-flex ">
-                                <div class="col-5">
+                            <div class="rov d-flex flex-column flex-lg-row align-items-start position-relative pb-5 justify-content-center">
+                                <div class="col-12 col-lg-6">
+                                    <h3 class="mb-4">User data</h3>
                                     <div class="mb-4 row">
-                                        <h3 class="mb-4">User data</h3>
+                                        
                                         
                                         <label for="name" class="col-md-4 col-form-label text-md-right">Name *</label>
             
@@ -134,22 +135,16 @@
                                         </div>
                                         <div id="match-text" class="text-danger d-none">Passwords do not match</div>
                                     </div>
-
-
-                                    <div class="my-3 fw-bold  ">
-                                        * Required field
-                                    </div>
-
-                                    
+                
                                 </div>
-                                <div class="col-2 d-flex flex-column justify-content-end align-items-center ">
+                                <div class="col-12 col-lg-6 position-absolute d-flex flex-column bottom-0 justify-content-end align-items-center ">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-success px-4" onclick="validate()">
                                             {{ __('Submit') }}
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-12 col-lg-6">
                                     <h3 class="mb-4">Restaurant data</h3>
                                 
         
@@ -230,7 +225,11 @@
                                                 @endif
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
+                                    
+                                    <div class=" fw-bold my-5   justify-content-between">
+                                        <strong>* Required field</strong>
+                                    </div>
                                 </div>
 
                             </div>
